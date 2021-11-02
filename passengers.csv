@@ -1,11 +1,11 @@
-car,dimensions,amount
-KIA Rio,,1720
-Hyundai Creta,,1130
-Hyundai Solaris,,1090
-Lada Granta,,1010
-Lada Vesta,,705
-Volkswagen Polo,,560
-Toyota Camry,,475
-Renault Logan,,465
-Škoda Rapid,,420
-Renault Duster,,400
+car,dimensions,wheelbase,amount
+KIA Rio,,2600,1720
+Hyundai Creta,,2590,1130
+Hyundai Solaris,,2600,1090
+Lada Granta,,2476,1010
+Lada Vesta,,2635,705
+Volkswagen Polo,,2591,560
+Toyota Camry,,2825,475
+Renault Logan,,2634,465
+Škoda Rapid,,2602,420
+Renault Duster,,2679,400
