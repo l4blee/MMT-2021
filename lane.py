@@ -12,25 +12,30 @@ from cars import Car
 
 
 class Window(QtWidgets.QMainWindow):  # fixed parking
-    def __init__(self, length: int):
+    def __init__(self, parent, length: int, test_time: int):
         super(Window, self).__init__()
-        self.proc_chance = 1  # 26 / 18 - 5; 12 / 19 -2
         loadUi('main.ui', self)
 
+        self.proc_chance = 1
         self.length = length
+        self._parent = parent
         self.places: list[list] = [[True, None, length * 1000]]
         self.counter: int = 0
+        self.test_time = test_time
         self.start_time = datetime.now()
 
         self._thread = threading.Thread(target=self.loop, daemon=True)
         self._thread.start()
 
     def closeEvent(self, event: QtGui.QCloseEvent) -> None:
-        print(f'{self.counter} cars have been staying on the parking')
-        print(f'Elapsed time: {(datetime.now() - self.start_time).seconds}s')
+        self._parent.lane_win_counter = self.counter
 
     def loop(self):
         while True:
+            if (datetime.now() - self.start_time).seconds == self.test_time:
+                self.close()
+                break
+
             for index, i in enumerate(self.places):
                 car, timestamp, length = i
                 if timestamp is not None and timestamp <= datetime.now():
@@ -135,9 +140,12 @@ class Window(QtWidgets.QMainWindow):  # fixed parking
         pixmap = self.convertImage(img)
         self.img.setPixmap(pixmap)
 
+        self.total.setText(f'Total: {self.counter} cars,'
+                           f' time: {(datetime.now() - self.start_time).seconds}s')
+
 
 if __name__ == '__main__':
     app = QtWidgets.QApplication([])
-    window = Window(20)
-    window.show()
+    win = Window(20)
+    win.show()
     app.exec()

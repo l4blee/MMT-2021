@@ -53,26 +53,26 @@ if __name__ == '__main__':
     x = sorted(total_probs.keys())
     y = [total_probs[i] for i in x]
 
-    '''plt.figure('cars_length_prob')
-    plt.plot(x, y)
+    plt.figure('cars_length_prob')
+    plt.bar(x, y)
     plt.xlabel('car length')
     plt.ylabel('probability')
     plt.xticks(rotation=45)
     plt.tight_layout()
-'''
+
     probs = defaultdict(float)
     for _, i in base.iterrows():
         probs[i.wheelbase] += i.probability
 
     x, y = zip(*sorted(probs.items()))
-    x = [str(i) for i in x]
+    x = [str(int(i / 2)) for i in x]
 
     print(x, y)
 
     plt.figure('wheelbases_prob')
-    plt.plot(x, y)
-    # plt.xlabel('car wheelbase')
-    # plt.ylabel('probability')
+    plt.bar(x, y)
+    plt.xlabel('parking gap')
+    plt.ylabel('probability')
     plt.xticks(rotation=45)
     plt.tight_layout()
 
