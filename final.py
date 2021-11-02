@@ -58,10 +58,10 @@ class MainWindow(QMainWindow):
         self.showAns()
 
     def showAns(self):
-        self.f.setText(f'{self.lane_win.counter} cars have been staying on the lane parking')
+        self.f.setText(f'{self.lane_win.counter} cars were parked on the lane parking')
         self.f.adjustSize()
 
-        self.s.setText(f'{self.markup_win.counter} cars have been staying on the marked-up parking')
+        self.s.setText(f'{self.markup_win.counter} cars were parked on the marked-up parking')
         self.s.adjustSize()
 
         self.t.setText(f'Elapsed time: {self.test_time}s')

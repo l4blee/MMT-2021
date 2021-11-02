@@ -1,7 +1,7 @@
 from probs import base
 import random
 
-range_border = 10 ** 9  # for randoming
+range_border = 10 ** 9
 
 weights = [i * range_border for i in base.probability]
 
@@ -21,7 +21,8 @@ base = base.set_index('car')
 
 class Car:
     def __init__(self, name: str, length: int, wheelbase: int, x: int):
-        exp_driver = random.choices([False, True], cum_weights=(82, 385))[0]
+        # exp_driver = random.choices([False, True], cum_weights=(82, 385))[0]
+        exp_driver = False
         self.parking_gap = random.choice([wheelbase / 2, [1.5, 0.5][exp_driver]])
 
         self.name = name

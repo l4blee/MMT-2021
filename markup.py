@@ -52,7 +52,7 @@ class Window(QtWidgets.QMainWindow, Ui_MainWindow):  # fixed parking
 
                     delta = random.randint(1, 5)
                     self.places[pos] = (car, datetime.now() + timedelta(seconds=delta))
-                    print(f'{car} has occupied place №{pos} for {delta}s')
+                    print(f'{car} has just occupied place №{pos} for {delta}s')
                     # print(self.places)
                 else:
                     print('No places left')

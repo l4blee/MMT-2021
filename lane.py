@@ -110,7 +110,7 @@ class Window(QtWidgets.QMainWindow, Ui_MainWindow):  # fixed parking
                                         datetime.now() + timedelta(seconds=delta),
                                         car.parking_gap * 2 + car.length]
 
-                    print(f'{car} has occupied place №{pos} for {delta}s')
+                    print(f'{car} has just occupied place №{pos} for {delta}s')
 
                 # print(self.places)
 

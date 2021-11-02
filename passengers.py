@@ -2,7 +2,7 @@ from collections import defaultdict
 
 import pandas as pd
 
-import core
+import search
 
 '''datasheet = 'passengers.csv'
 df = pd.read_csv(datasheet, index_col=False)

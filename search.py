@@ -1,7 +1,4 @@
-from collections import defaultdict
-
 import bs4
-import matplotlib.pyplot as plt
 import pandas as pd
 import requests as rq
 
@@ -24,16 +21,3 @@ def get_dims(df: pd.DataFrame) -> pd.DataFrame:  # Только для легк�
     df = df.sort_values(by=['dimensions', 'car'], ascending=True)
 
     return df
-
-
-def get_plot(df: pd.DataFrame, index) -> plt.Figure:
-    figure = plt.figure(index)
-
-    dims = defaultdict(int)
-    for index, row in df.iterrows():
-        dims[str(row.dimensions)] += int(row.amount)
-
-    plt.bar(list(dims.keys()), dims.values())
-    plt.xticks(rotation=45)
-
-    return figure
