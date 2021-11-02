@@ -6,15 +6,15 @@ from datetime import datetime, timedelta
 from PIL import Image, ImageDraw
 from PyQt5 import QtWidgets, QtGui
 from PyQt5.QtGui import QImage, QPixmap
-from PyQt5.uic import loadUi
 
 from cars import Car
+from main import Ui_MainWindow
 
 
-class Window(QtWidgets.QMainWindow):  # fixed parking
+class Window(QtWidgets.QMainWindow, Ui_MainWindow):  # fixed parking
     def __init__(self, parent, length: int, test_time: int):
         super(Window, self).__init__()
-        loadUi('main.ui', self)
+        self.setupUi(self)
 
         self.proc_chance = 1
         self.length = length
@@ -127,7 +127,7 @@ class Window(QtWidgets.QMainWindow):  # fixed parking
 
     def applyImage(self):
         width = self.width() / len(self.places)
-        img = Image.new('RGBA', (self.width(), 100), color=(255, 255, 255, 0))
+        img = Image.new('RGBA', (self.width() + 20, 120), color=(255, 255, 255, 0))
         drawer = ImageDraw.Draw(img)
 
         for index, i in enumerate(self.places):
